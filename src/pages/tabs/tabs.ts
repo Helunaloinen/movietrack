@@ -9,9 +9,9 @@ import { MoviesPage } from '../movies/movies';
 })
 export class TabsPage {
 
-  tab1Root = AddPage;
+  tab1Root = AboutPage;
   tab2Root = MoviesPage;
-  tab3Root = AboutPage;
+  tab3Root = AddPage;
 
   constructor() {
 

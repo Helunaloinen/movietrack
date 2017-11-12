@@ -17,13 +17,13 @@
     </div>
   
     <p class="text" style="font-size: 14px; color: #ebebeb">Forgot your password?</p>
-    
+
     <div text-center>
-      <button class="btnWidth" ion-button color="dark" round [navPush]="nextPage">Login</button>
+      <button class="btnWidth" ion-button color="dark" round (click)="login()">Login</button>
     </div>
   
     <div text-center>
-        <button class="myButton" ion-button color="dark" round outline [navPush]="nextPage">Sign Up</button>
+        <button class="myButton" ion-button color="dark" round outline (click)="register()">Sign Up</button>
     </div>  
 
 

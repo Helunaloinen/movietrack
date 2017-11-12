@@ -1,17 +1,21 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-slides pager>
+  <!-- This is first slider -->
+  <ion-slide style="background-color: #41c6f1">
+  <ion-icon ios="ios-globe" md="md-globe" style="zoom:5.0;"></ion-icon>
+  <h1 style="color: #ebebeb">Want to track movies you’ve seen?</h1>
+  </ion-slide>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-</ion-content>
+  <!-- This is second slider -->
+  <ion-slide style="background-color: #f141da">
+  <ion-icon ios="ios-heart" md="md-heart" style="zoom:5.0;"></ion-icon>
+  <h1 style="color: #ebebeb">Want to check the name of the flick you just saw?</h1>
+  </ion-slide>
+
+  <!-- This is last slider -->
+  <ion-slide class="bg-image">
+  <h1 style="color: #000000">Welcome to MovieTrack!</h1>
+  <!-- button to continue -->
+  <button ion-button color="dark" round  [navPush]="nextPage">Let's Go!</button>
+  </ion-slide>
+
+</ion-slides>

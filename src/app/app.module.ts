@@ -14,6 +14,22 @@ import { RegisterPage } from '../pages/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { HttpModule } from '@angular/http';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
+import firebase from 'firebase';
+import { FirebaseProvider } from '../providers/firebase/firebase';
+
+export const firebaseAuth = {
+  apiKey: "AIzaSyDJmgrnDEUJBH0L1Sef1JM5slrquIBX6Y4",
+  authDomain: "movietrack-71920.firebaseapp.com",
+  databaseURL: "https://movietrack-71920.firebaseio.com",
+  projectId: "movietrack-71920",
+  storageBucket: "",
+  messagingSenderId: "314864919615"
+};
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,10 +41,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MoviesPage,
     RegisterPage
   ],
+
   imports: [
+
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseAuth),
+    AngularFireAuthModule,
+    HttpModule,
+    AngularFireDatabaseModule,
   ],
+
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -43,7 +66,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    FirebaseProvider,
+    
   ]
 })
 export class AppModule {}

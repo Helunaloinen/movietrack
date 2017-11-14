@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { Observable } from 'rxjs/Observable';
+import firebase from 'firebase';
 
-/**
- * Generated class for the MoviesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -14,12 +12,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'movies.html',
 })
 export class MoviesPage {
+  Movies: Observable<any[]>;
+  newMovie="";
+  testi;
+ 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public fbProvider:FirebaseProvider, public navCtrl: NavController, public navParams: NavParams) {
+    this.Movies = this.fbProvider.getMovies().valueChanges();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MoviesPage');
+   // 
+    console.log(this.Movies);
+    
+
   }
 
 }

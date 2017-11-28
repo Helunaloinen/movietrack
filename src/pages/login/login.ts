@@ -49,7 +49,7 @@ export class LoginPage {
     this.presentLoading(); //some loading effect during a login
     this.fire.auth.signInWithEmailAndPassword(this.user.value, this.password.value) //set user & pass as parameters ..call function from AngularFireAuth
     .then( data => { //data ok
-     this.alert('Olet kirjautunut sisään'); //show message to user
+     this.alert('You are now signed in!'); //show message to user
      this.navCtrl.setRoot(TabsPage); //sidemenu/tabs
     })
     .catch( error => {
@@ -63,7 +63,7 @@ export class LoginPage {
   fbSignin() {
     this.fbAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(
       res=> {
-         this.alert ('FB-kirjautuminen onnistui');
+         this.alert ('FB sign in successful!');
          
          this.navCtrl.push(TabsPage);
       }).catch(error =>{

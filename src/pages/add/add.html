@@ -11,10 +11,12 @@
 <ion-content padding>
 
   <ion-item>
-    <ion-label color="primary" stacked>Find Movie</ion-label>
+    <ion-label color="primary" style="font-size:14px" stacked>Find Movie</ion-label>
     <ion-input type="text" placeholder="Search" #search></ion-input>
   </ion-item>
-  <button ion-button color="primary" (click)="searchMovie()">Search</button>
+  <button ion-button icon-end color="primary" round (click)="searchMovie()">Search
+    <ion-icon name="search"></ion-icon>
+  </button>
   
   <ion-card id="movie" color="dark">
     <img id="poster" src="#" #img/>
@@ -25,7 +27,7 @@
       <p id="info">
         
       </p>
-      <button ion-button icon-end color="secondary"(click)="addMovie()">
+      <button ion-button icon-end color="secondary" round (click)="addMovie()">
         Add
         <ion-icon name="md-checkmark"></ion-icon>
       </button>

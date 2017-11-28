@@ -14,12 +14,10 @@
 
 
 <ion-content padding>
-    <h3> My Collection:</h3>
-     
       <ion-list>
          <ion-item-sliding *ngFor= "let movie of Movies | async">
-            <ion-item >
-              {{ movie.$value}}
+            <ion-item style="font-size:18px;"><ion-icon name="film" item-start></ion-icon>
+              {{movie | json}}
             </ion-item>
             <ion-item-options side="right">
               <button ion-button color="danger" icon-only (click)="removeMovie(movie.$key)"><ion-icon name="trash"></ion-icon></button>

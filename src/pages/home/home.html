@@ -1,21 +1,33 @@
 <ion-slides pager>
   <!-- This is first slider -->
-  <ion-slide style="background-color: #41c6f1">
-  <ion-icon ios="ios-globe" md="md-globe" style="zoom:5.0;"></ion-icon>
-  <h1 style="color: #ebebeb">Want to track movies you’ve seen?</h1>
+  <ion-slide class="bg-image1">
+      <div class="box">
+        <h1>Want to...</h1>
+        <ion-icon name="checkbox" style="zoom:2.0;"></ion-icon>
+  <h1>...track movies you’ve seen?</h1>
+  <p>Make a list to remember them!</p>
+  </div>
   </ion-slide>
 
   <!-- This is second slider -->
-  <ion-slide style="background-color: #f141da">
-  <ion-icon ios="ios-heart" md="md-heart" style="zoom:5.0;"></ion-icon>
-  <h1 style="color: #ebebeb">Want to check the name of the flick you just saw?</h1>
+  <ion-slide class="bg-image2">
+      <div class="box">
+          <h1>Want to...</h1>
+  <ion-icon name="film" style="zoom:2.0;"></ion-icon>
+  <h1>...check the name of the flick you just saw?</h1>
+  <p>Search with a name and receive info!</p>
+      </div>
   </ion-slide>
 
   <!-- This is last slider -->
   <ion-slide class="bg-image">
-  <h1 style="color: #000000">Welcome to MovieTrack!</h1>
+      <div class="box">
+          <h1>Want to...</h1>
+          <img src="assets/imgs/logo.png" class="logo" style="zoom:0.3;">
+  <h1>...join MovieTrack?</h1>
   <!-- button to continue -->
-  <button ion-button color="dark" round  [navPush]="nextPage">Let's Go!</button>
+  <button ion-button color="dark" round  [navPush]="nextPage">Join now</button>
+      </div>
   </ion-slide>
 
 </ion-slides>

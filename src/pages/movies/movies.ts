@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FirebaseProvider } from './../../providers/firebase/firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase';
-
-
 
 @IonicPage()
 @Component({
@@ -12,18 +10,24 @@ import firebase from 'firebase';
   templateUrl: 'movies.html',
 })
 export class MoviesPage {
-  Movies: Observable<any[]>;
-  newMovie="";
-  testi;
+  Movies : Observable<any[]>;
+  User;
  
 
-  constructor(public fbProvider:FirebaseProvider, public navCtrl: NavController, public navParams: NavParams) {
-    this.Movies = this.fbProvider.getMovies().valueChanges();
+  constructor(public afdb: AngularFireDatabase, public navCtrl: NavController, public navParams: NavParams) {
+    this.User = firebase.auth().currentUser.uid;
+    this.Movies = afdb.list(this.User).valueChanges();
+  
   }
+
+  removeMovie(){
+    
+  }
+
 
   ionViewDidLoad() {
    // 
-    console.log(this.Movies);
+    console.log();
     
 
   }

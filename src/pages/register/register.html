@@ -1,22 +1,26 @@
 <ion-content class="bg-image no-scroll" padding>
   
-    <img src="assets/imgs/logo.png" class="logo">
+    <div text-center>
+        <img src="assets/imgs/logo.png" class="logo" style="zoom:0.5;">
+        </div>
   
-    <div>
-      <ion-list class="list" inset>
-        <ion-item class="label">
+    <div class="box">
+      <ion-list inset>
+        <ion-item >
           <ion-label color="dark" style="font-size:12px" stacked>Username</ion-label>
           <ion-input type="text" placeholder="Enter username" #username></ion-input>
         </ion-item>
   
-        <ion-item class="label">
+        <ion-item>
             <ion-label color="dark" style="font-size:12px" stacked>Password</ion-label>
             <ion-input color="dark" type="password" placeholder="Enter password" #password></ion-input>
           </ion-item>
       </ion-list>
+      
+      <div text-center>
+        <button ion-button color="dark" round (click)="registerUser()">Sign Up</button>
+      </div>  
     </div>
  
-    <div text-center>
-        <button class="myButton" ion-button color="dark" (click)="registerUser()">Sign Up</button>
-      </div>  
+
   </ion-content>

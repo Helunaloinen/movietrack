@@ -21,7 +21,7 @@ export class FirebaseProvider {
    
     addMovie(name) {
       this.userId = firebase.auth().currentUser.uid
-      this.myMovie.list(this.userId+'/Movies/').push(name);
+      this.myMovie.list(this.userId).push(name);
     }
    
     removeMovie(id) {

@@ -1,34 +1,40 @@
 <ion-content class="bg-image no-scroll" padding>
   
-    <img src="assets/imgs/logo.png" class="logo">
+    <div text-center>
+    <img src="assets/imgs/logo.png" class="logo" style="zoom:0.5;">
+    </div>
   
-    <div>
-      <ion-list class="list" inset>
-        <ion-item class="label">
-          <ion-label color="dark" style="font-size:12px" stacked>Username</ion-label>
-          <ion-input type="text" placeholder="Enter username" #username></ion-input>
+    <div class="box">
+      <ion-list inset>
+        <ion-item >
+          <ion-label color="dark" style="font-size:14px" stacked>E-mail</ion-label>
+          <ion-input type="text" placeholder="Enter e-mail" #username></ion-input>
         </ion-item>
   
-        <ion-item class="label">
-            <ion-label color="dark" style="font-size:12px" stacked>Password</ion-label>
+        <ion-item >
+            <ion-label color="dark" stacked>Password</ion-label>
             <ion-input color="dark" type="password" placeholder="Enter password" #password></ion-input>
           </ion-item>
       </ion-list>
-    </div>
-  
-    <p class="text" style="font-size: 14px; color: #ebebeb">Forgot your password?</p>
 
     <div text-center>
-      <button class="btnWidth" ion-button color="dark" round (click)="signInUser()">Login</button>
+      <button ion-button color="dark" round (click)="signInUser()">Login</button>
     </div>
+
     <div text-center>
+      <p>You can also login with these services:</p>
       <img src="assets/imgs/facebook.png" (click)="fbSignin()" width="80px">
       <img src="assets/imgs/twitter.png" width="80px">
     </div>
   
     <div text-center>
-        <button class="myButton" ion-button color="dark" round outline (click)="register()">Sign Up</button>
+      <p>Don't have an account? Create one here!</p>
+        <button ion-button color="dark" round outline (click)="register()">Sign Up</button>
     </div>  
+
+    </div>
+  
+
 
 
   </ion-content>

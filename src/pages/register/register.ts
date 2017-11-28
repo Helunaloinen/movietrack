@@ -31,7 +31,7 @@ export class RegisterPage {
     console.log("rekisteröi");
     this.fire.auth.createUserWithEmailAndPassword(this.user.value, this.password.value) //set parameters user & pass to Angular auth
     .then( data => {  //if validation ok
-      this.alert('Rekisteröinti OK!'); //message 
+      this.alert('You are now registered as a user!'); //message 
       this.navCtrl.setRoot(LoginPage); //go to loginpage
     })
     .catch(error =>{

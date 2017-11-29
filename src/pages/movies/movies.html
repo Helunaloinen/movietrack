@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>List of your movies</ion-title>
+    <ion-title>Movie Collection</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,10 +17,10 @@
       <ion-list>
          <ion-item-sliding *ngFor= "let movie of Movies | async">
             <ion-item style="font-size:18px;"><ion-icon name="film" item-start></ion-icon>
-              {{movie | json}}
+              {{movie.payload | json}}
             </ion-item>
             <ion-item-options side="right">
-              <button ion-button color="danger" icon-only (click)="removeMovie(movie.$key)"><ion-icon name="trash"></ion-icon></button>
+              <button ion-button color="danger" icon-only (click)="removeMovie(movie.key)"><ion-icon name="trash"></ion-icon></button>
             </ion-item-options>
           </ion-item-sliding>
         </ion-list>

@@ -1,8 +1,10 @@
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 import { FirebaseProvider } from './../../providers/firebase/firebase';
 //import { AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+
+
 
 @IonicPage()
 @Component({
@@ -17,30 +19,52 @@ export class AddPage {
   newMovie="";
   title:string;
   api:string;
+  data="";
+  test;
+  public itemsList:Array<any>;
+  public loadedItemsList:Array<any>;
  
 
-  constructor( public navCtrl: NavController, public navParams: NavParams, public fbProvider:FirebaseProvider) {
-    this.Movies= this.fbProvider.getMovies();
+  constructor( public navCtrl: NavController, public navParams: NavParams, public fbProvider:FirebaseProvider, public alertCtrl:AlertController) {
+  
     var nimi= nimi;
   }
+ 
+  getItems(value){
+    console.log(value);
+    if(value.length>1){
+    var datalist=document.getElementById("datalist1");
+      var api="http://www.omdbapi.com/?s="+encodeURI(value)+"&plot=full&apikey=cd7d40e9";
+      var jsonhttp= new XMLHttpRequest();
+      jsonhttp.open("GET", api, true);
+      jsonhttp.send();
+    jsonhttp.onreadystatechange=function(){
+      if(jsonhttp.readyState==4 && jsonhttp.status==200){
+          var vastaus=JSON.parse(jsonhttp.responseText);
+         
+          if(vastaus.Response!="False"&&vastaus.Search.length>0){
+            for (var i=0; i<vastaus.Search.length;i++) {
+            
+              var option= document.createElement('option');
+                option.value=vastaus.Search[i].Title;
+                datalist.appendChild(option);
+            
+            }
+          }
+      }
+          
+    }
+  }
+  }
+  
 
   addMovie() {
     this.title=document.getElementById('title').innerText;
-    console.log(this.title);
     this.fbProvider.addMovie(this.title);
+    this.alert(this.title +" added to your collection!");
+    document.getElementById('movie').style.visibility="hidden";
+    document.getElementById('search').innerHTML="";
   }
- 
-  removeMovie(id) {
-    this.fbProvider.removeMovie(id);
-  }
-
-  searchMovie(){ 
-    console.log(this.search)
-    this.getMovie(this.search.value);
-  
-
-  }
-  
  
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddPage');
@@ -49,15 +73,16 @@ export class AddPage {
 //moviesearch:
 getMovie(srcvalue){
   var vastaus="";
- 
+
   var api="http://www.omdbapi.com/?t="+encodeURI(srcvalue)+"&plot=full&apikey=cd7d40e9";
        var jsonhttp= new XMLHttpRequest();
             jsonhttp.open("GET", api, true);
             jsonhttp.send();
             jsonhttp.onreadystatechange=function(){
           if(jsonhttp.readyState==4 && jsonhttp.status==200){
-              vastaus=JSON.parse(jsonhttp.responseText);
-          
+              
+            vastaus=JSON.parse(jsonhttp.responseText);
+            if(vastaus.Response!="False"){
               var nimi=vastaus.Title;
               var kesto=vastaus.Runtime;
               var tyyppi=vastaus.Type;
@@ -74,16 +99,23 @@ getMovie(srcvalue){
               document.getElementById('title').innerText=nimi;
               document.getElementById('info').innerHTML=info;
               document.getElementById('movie').style.visibility="visible";
- 
-          console.log(nimi);
-          
-      
-        }
-        //return vastaus;   //console.log(nimi);
+            }else{
+              alert("Movie not found");
+            }
+   
+    
+          }
+       
       }
-  
 
 }
-  
+alert(message:string) {
+  this.alertCtrl.create({
+    title: 'Info!',
+    subTitle: message,
+    buttons: ['OK']
+  }).present();
+}
+
 
 }

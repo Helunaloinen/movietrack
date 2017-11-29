@@ -1,7 +1,7 @@
 //import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 import firebase from 'firebase';
 import { HttpModule } from '@angular/http';
@@ -13,10 +13,12 @@ export class FirebaseProvider {
   userId;
 
   constructor( private myMovie:AngularFireDatabase) {
+    this.userId = firebase.auth().currentUser.uid
+
   }
     getMovies() {
       this.userId = firebase.auth().currentUser.uid
-      return this.myMovie.list(this.userId+'/Movies/');
+      return this.myMovie.list(this.userId);
     }
    
     addMovie(name) {
@@ -24,9 +26,9 @@ export class FirebaseProvider {
       this.myMovie.list(this.userId).push(name);
     }
    
-    removeMovie(id) {
+    removeMovie(key: string) {
       this.userId = firebase.auth().currentUser.uid
-      this.myMovie.list(this.userId+'/Movies/').remove(id);
+      this.myMovie.list(this.userId).remove();
     }
     
 
